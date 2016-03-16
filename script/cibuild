@@ -1,8 +1,8 @@
 #!/bin/bash
 
 sudo service dbus start
-export DISPLAY = ':0'
-export DBUS_SESSION_BUS_ADDRESS = 'unix:path=/run/dbus/system_bus_socket'
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
 export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 
 # FIXME Find out why we cound not connect to gnome-keyring-daemon.
