@@ -1,6 +1,19 @@
 var binary = require('node-pre-gyp');
 var path = require('path');
-var src = binary.find(path.join(__dirname, 'package.json'));
+var PACKAGEJSON = path.join(__dirname, 'package.json');
+var runtime = 'node';
+
+if (process.versions.electron) {
+  runtime = 'electron';
+} else if (process.versions['node-webkit']) {
+  runtime = 'node-webkit';
+}
+
+var opts = {
+  runtime: runtime
+};
+
+var src = binary.find(PACKAGEJSON, opts);
 var binding = require(src);
 
 module.exports = {
