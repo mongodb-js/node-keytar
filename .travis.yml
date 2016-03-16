@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: node_js
 node_js:
   - 5
@@ -25,7 +25,7 @@ addons:
     - libkrb5-dev
     - libgnome-keyring-dev
 
-script: npm run-script ci
+script: sudo npm run-script ci
 # Post build notifications to the Integrations Flowdock
 notifications:
   flowdock: e3dc17bc8a2c1b3412abe3e5747f8291
