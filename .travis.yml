@@ -1,36 +1,29 @@
 sudo: false
 language: node_js
 node_js:
-  - '4.2.1'
+  - 5
 # addons:
 #   apt:
 #     packages:
 #       - xvfb
 #       - gnome-keyring
 #       - libgnome-keyring-dev
-# env:
-#   - CC=clang CXX=clang++ npm_config_clang=1
+env:
+  # - CC=clang CXX=clang++ npm_config_clang=1
+  - CXX=g++-4.8 CI=1
 # script: xvfb-run ./script/cibuild
 
 # Need to add CXX env flag and g++-4.8 (in ubuntu-toolchain-r-test source)
 # @see https://github.com/travis-ci/travis-ci/issues/4771
 # @see https://github.com/redis/hiredis-node/blob/master/.travis.yml
-env:
-  - CXX=g++-4.8
-before_install:
-  - export JOBS=max
-  - export prebuild_compile=true
-  - npm install -g npm@3
-  - npm config set loglevel error
-  - npm config -g list -l
-  - npm --version
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - libgnome-keyring-dev
-      - g++-4.8
+    - g++-4.8
+    - libkrb5-dev
+    - libgnome-keyring-dev
 
 script: npm run-script ci
 # Post build notifications to the Integrations Flowdock
