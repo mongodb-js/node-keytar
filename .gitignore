@@ -4,4 +4,4 @@ build/
 *.log
 *~
 .node-version
-prebuilds/
+lib/binding

@@ -1,4 +1,7 @@
-var binding = require('./build/Release/keytar.node');
+var binary = require('node-pre-gyp');
+var path = require('path');
+var src = binary.find(path.join(__dirname, 'package.json'));
+var binding = require(src);
 
 module.exports = {
   getPassword: function(service, account) {

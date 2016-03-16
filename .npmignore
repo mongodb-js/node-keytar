@@ -9,4 +9,5 @@ appveyor.yml
 *~
 .node-version
 .npmignore
-prebuilds/
+lib/binding
+script/
