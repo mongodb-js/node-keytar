@@ -36,18 +36,18 @@
   "scripts": {
     "fmt": "mongodb-js-fmt",
     "check-js": "mongodb-js-precommit",
-    "check-cpp": "node-cpplint --verbose src/*.cc",
+    "check-cpp": "node-cpplint src/*.cc --verbose",
     "check": "npm run check-cpp && npm run check-js",
     "install": "node-pre-gyp install --fallback-to-build",
-    "build-electron": "cross-env HOME=~/.electron-gyp npm_config_disturl=https://atom.io/download/atom-shell node-pre-gyp build package --target=0.36.11 --runtime=electron",
-    "pretest-node": "node-pre-gyp build",
+    "build-electron": "cross-env HOME=./.electron-gyp npm_config_disturl=https://atom.io/download/atom-shell node-pre-gyp rebuild package --target=0.36.11 --runtime=electron",
+    "pretest-node": "node-pre-gyp rebuild",
     "test-node": "mocha",
     "pretest-electron": "npm run build-electron",
     "test-electron": "electron-mocha",
     "test": "npm run test-node && npm run test-electron",
     "ci": "npm run check && xvfb-maybe npm test",
     "publish-node": "node-pre-gyp build package publish info --loglevel info",
-    "publish-electron": "cross-env HOME=~/.electron-gyp npm_config_disturl=https://atom.io/download/atom-shell node-pre-gyp build  package publish info --target=0.36.11 --runtime=electron --loglevel info"
+    "publish-electron": "cross-env HOME=./.electron-gyp npm_config_disturl=https://atom.io/download/atom-shell node-pre-gyp build package publish info --target=0.36.11 --runtime=electron --loglevel info"
   },
   "devDependencies": {
     "aws-sdk": "^2.2.44",

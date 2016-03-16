@@ -11,3 +11,4 @@ appveyor.yml
 .npmignore
 lib/binding
 script/
+.electron-gyp
