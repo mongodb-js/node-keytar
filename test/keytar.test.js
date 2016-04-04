@@ -8,6 +8,12 @@ describe('keytar', function() {
   var account2 = 'buster2';
   var password2 = 'secret2';
 
+  before(function() {
+    if (process.env.TRAVIS) {
+      return this.skip();
+    }
+  });
+
   beforeEach(function() {
     keytar.deletePassword(service, account);
     keytar.deletePassword(service, account2);
