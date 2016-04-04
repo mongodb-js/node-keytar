@@ -43,7 +43,7 @@
     "pretest-node": "node-pre-gyp rebuild",
     "test-node": "mocha",
     "pretest-electron": "npm run build-electron",
-    "test-electron": "electron-mocha",
+    "test-electron": "node ./node_modules/.bin/electron-mocha",
     "test": "npm run test-node && npm run test-electron",
     "ci": "xvfb-maybe script/cibuild",
     "publish-node": "node-pre-gyp build package publish info --loglevel info",
