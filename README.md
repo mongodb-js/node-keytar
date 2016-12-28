@@ -1,36 +1,39 @@
-# keytar [![](travis_img)](travis_url) [![](appveyor_img)](appveyor_url)
+# keytar [![travis][travis_img]][travis_url] [![appveyor][appveyor_img]][appveyor_url]
 
-> A native Node module to get, add, replace, and delete passwords in system's
-> keychain. On OS X the passwords are managed by the Keychain, on Linux they are
-> managed by the Secret Service API/libsecret, and on Windows they are managed by Credential Vault.
+> Securely store and manage passwords using platform specific backends. The backend on macOS is [Keychain][keychain], on Linux it's [the Secret Service][secret service], and on Windows it's [Credential Vault][credential vault].
 
-## Installing
+## Install and Usage
 
-```sh
+```bash
 npm install keytar
 ```
 
-### On Linux
+```javascript
+const keytar = require('keytar');
+
+keytar.addPassword('com.mycompany.myapp', 'weblogin', 'myPassword');
+>> true
+keytar.getPassword('com.mycompany.myapp', 'weblogin');
+>> 'myPassword'
+keytar.replacePassword('com.mycompany.myapp', 'weblogin', 'myBett3rPassw0rd');
+>> true
+keytar.getPassword('com.mycompany.myapp', 'weblogin');
+>> 'myBett3rPassw0rd'
+keytar.removePassword('com.mycompany.myapp', 'weblogin');
+>> true
+```
+
+### Linux
 
 Currently this library uses `libsecret` so you may need to install it before `npm install`ing.
 
 Depending on your distribution, you will need to run the following command:
 
-* Debian/Ubuntu: `sudo apt-get install libsecret-1-dev`
-* Red Hat-based: `sudo yum install libsecret-devel`
-* Arch Linux: `sudo pacman -S libsecret`
+- Debian/Ubuntu: `sudo apt-get install libsecret-1-dev`
+- Red Hat-based: `sudo yum install libsecret-devel`
+- Arch: `sudo pacman -S libsecret`
 
-## Building
-  * Clone the repository
-  * Run `npm install`
-  * Run `grunt` to compile the native and CoffeeScript code
-  * Run `grunt test` to run the specs
-
-## Docs
-
-```coffeescript
-keytar = require 'keytar'
-```
+## API
 
 ### getPassword(service, account)
 
@@ -88,7 +91,19 @@ Find a password for the `service` in the keychain.
 
 Returns the string password or `null` on failures.
 
+## Development
+
+```bash
+git clone git@github.com:mongodb-js/node-keytar.git ~/keytar;
+cd ~/keytar;
+npm install;
+npm test;
+```
+
 [travis_img]: https://travis-ci.org/mongodb-js/node-keytar.svg?branch=master
 [travis_url]: https://travis-ci.org/mongodb-js/node-keytar
 [appveyor_img]: https://ci.appveyor.com/api/projects/status/59d972f9yof17hjq?svg=true
 [appveyor_url]: https://ci.appveyor.com/project/imlucas/node-keytar
+[secret service]: https://developer.gnome.org/libsecret/unstable/SecretService.html
+[keychain]: https://en.wikipedia.org/wiki/Keychain_(software)
+[credential vault]: https://msdn.microsoft.com/en-us/library/windows/desktop/aa374792(v=vs.85).aspx
