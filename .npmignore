@@ -12,3 +12,4 @@ appveyor.yml
 lib/binding
 script/
 .electron-gyp
+prebuilds/
