@@ -1,11 +1,8 @@
-# keytar - Node module to manage system keychain
+# keytar [![](travis_img)](travis_url) [![](appveyor_img)](appveyor_url)
 
-[![Build
-Status](https://travis-ci.org/atom/node-keytar.svg?branch=master)](https://travis-ci.org/atom/node-keytar)
-
-A native Node module to get, add, replace, and delete passwords in system's
-keychain. On OS X the passwords are managed by the Keychain, on Linux they are
-managed by the Secret Service API/libsecret, and on Windows they are managed by Credential Vault.
+> A native Node module to get, add, replace, and delete passwords in system's
+> keychain. On OS X the passwords are managed by the Keychain, on Linux they are
+> managed by the Secret Service API/libsecret, and on Windows they are managed by Credential Vault.
 
 ## Installing
 
@@ -90,3 +87,8 @@ Find a password for the `service` in the keychain.
 `service` - The string service name.
 
 Returns the string password or `null` on failures.
+
+[travis_img]: https://travis-ci.org/mongodb-js/node-keytar.svg?branch=master
+[travis_url]: https://travis-ci.org/mongodb-js/node-keytar
+[appveyor_img]: https://ci.appveyor.com/api/projects/status/59d972f9yof17hjq?svg=true
+[appveyor_url]: https://ci.appveyor.com/project/imlucas/node-keytar
