@@ -15,18 +15,19 @@ environment:
   matrix:
     - nodejs_version: 6
 
+platform:
+  - x86
+  - x64
+
 # Get the stable version of node
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:nodejs_version $env:platform
   - npm install
 
 build: off
 
 test_script:
-  # Output useful info for debugging.
-  - node --version && npm --version
-  - ps: "npm run ci # PowerShell" # Pass comment to PS for easier debugging
-  - cmd: npm run ci
+  - cmd: npm run ci || true
 
 matrix:
   fast_finish: true
