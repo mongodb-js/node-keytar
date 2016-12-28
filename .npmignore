@@ -13,3 +13,4 @@ lib/binding
 script/
 .electron-gyp
 prebuilds/
+.env
