@@ -26,49 +26,39 @@
     "credential vault"
   ],
   "main": "index.js",
-  "binary": {
-    "module_name": "keytar",
-    "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
-    "remote_path": "./js/{module_name}/v{version}/{configuration}/",
-    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
-    "host": "https://mongodb-dx-public.s3.amazonaws.com"
-  },
   "scripts": {
     "fmt": "mongodb-js-fmt",
-    "check-js": "mongodb-js-precommit",
     "check-cpp": "node-cpplint src/*.cc --verbose",
-    "check": "npm run check-cpp && npm run check-js",
-    "preinstall": "npm install node-pre-gyp",
-    "install": "node-pre-gyp install --fallback-to-build",
-    "build-electron": "cross-env HOME=./.electron-gyp npm_config_disturl=https://atom.io/download/atom-shell node-pre-gyp rebuild package --target=1.2.8 --runtime=electron",
-    "pretest-node": "node-pre-gyp rebuild",
+    "check": "npm run check-cpp",
+    "install": "prebuild-install -d || node-gyp rebuild",
+    "build-electron": "cross-env HOME=./.electron-gyp npm_config_disturl=https://atom.io/download/atom-shell node-gyp rebuild --target=1.2.8 --runtime=electron",
+    "pretest-node": "prebuild --compile",
     "test-node": "mocha",
     "pretest-electron": "npm run build-electron",
     "test-electron": "xvfb-maybe electron-mocha",
     "test": "npm run test-node && npm run test-electron",
-    "ci": "npm test",
-    "publish-node": "node-pre-gyp build package publish info --loglevel info",
-    "publish-electron": "cross-env HOME=./.electron-gyp npm_config_disturl=https://atom.io/download/atom-shell node-pre-gyp build package publish info --target=1.2.8 --runtime=electron --loglevel info"
+    "ci": "npm run check && npm test && npm run prebuild-node && npm run prebuild-electron",
+    "prebuild-node": "prebuild -b 6.3.1 --strip --verbose",
+    "prebuild-electron": "prebuild -b 1.2.8 -r electron --strip --verbose"
   },
   "devDependencies": {
     "aws-sdk": "^2.2.44",
     "cross-env": "^3.1.3",
     "electron-mocha": "^3.1.1",
-    "electron-prebuilt": "^1.2.8",
+    "electron-prebuilt": "1.2.8",
     "eslint-config-mongodb-js": "^2.2.0",
     "mocha": "^3.1.2",
     "mongodb-js-fmt": "0.0.3",
     "mongodb-js-precommit": "^0.2.8",
     "node-cpplint": "~0.4.0",
+    "prebuild": "^5.1.2",
     "rimraf": "~2.5.4",
     "xvfb-maybe": "^0.1.3"
   },
   "dependencies": {
     "debug": "^2.2.0",
     "nan": "^2.2.0",
-    "node-pre-gyp": "0.x"
-  },
-  "bundledDependencies": [
-    "node-pre-gyp"
-  ]
+    "prebuild": "^5.1.2",
+    "prebuild-install": "^1.1.0"
+  }
 }

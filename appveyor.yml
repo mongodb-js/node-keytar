@@ -13,7 +13,7 @@ version: "{build}"
 # what combinations to test
 environment:
   matrix:
-    - nodejs_version: 4.1.2
+    - nodejs_version: 6
 
 # Get the stable version of node
 install:
@@ -25,8 +25,8 @@ build: off
 test_script:
   # Output useful info for debugging.
   - node --version && npm --version
-  - ps: "npm test # PowerShell" # Pass comment to PS for easier debugging
-  - cmd: npm test
+  - ps: "npm run ci # PowerShell" # Pass comment to PS for easier debugging
+  - cmd: npm run ci
 
 matrix:
   fast_finish: true

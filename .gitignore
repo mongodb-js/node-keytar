@@ -6,3 +6,4 @@ build/
 .node-version
 lib/binding
 .electron-gyp
+prebuilds/
