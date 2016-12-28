@@ -30,7 +30,7 @@
     "fmt": "mongodb-js-fmt",
     "check-cpp": "node-cpplint src/*.cc --verbose",
     "check": "npm run check-cpp",
-    "install": "prebuild-install -d || node-gyp rebuild",
+    "install": "prebuild-install -d --verbose || node-gyp rebuild",
     "build-electron": "cross-env HOME=./.electron-gyp npm_config_disturl=https://atom.io/download/atom-shell node-gyp rebuild --target=1.2.8 --runtime=electron",
     "pretest-node": "prebuild --compile",
     "test-node": "mocha",
@@ -64,6 +64,6 @@
   "dependencies": {
     "debug": "^2.2.0",
     "nan": "^2.3.2",
-    "prebuild-install": "^1.1.0"
+    "prebuild-install": "mongodb-js/prebuild-install#f538b9cd6d7c424ae011a082f3cf99cf1ed1921b"
   }
 }
