@@ -1,19 +1,11 @@
-sudo: false
+sudo: required
+dist: trusty
 language: node_js
 node_js:
   - 6
 env:
-  # Need to add CXX env flag and g++-4.8 (in ubuntu-toolchain-r-test source)
-  # @see https://github.com/travis-ci/travis-ci/issues/4771
-  # @see https://github.com/redis/hiredis-node/blob/master/.travis.yml
-  - CXX=g++-4.8 CI=1 CC=clang CXX=clang++ npm_config_clang=1
+  - CC=clang CXX=clang++ npm_config_clang=1
 script: npm run ci
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - g++-4.8
-    - xvfb
-    - gnome-keyring
-    - libgnome-keyring-dev
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install xvfb gnome-keyring libsecret-1-dev
