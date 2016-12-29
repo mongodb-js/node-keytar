@@ -30,7 +30,7 @@
     "fmt": "mongodb-js-fmt",
     "check-cpp": "node-cpplint src/*.cc --verbose",
     "check": "npm run check-cpp",
-    "install": "prebuild-install --verbose",
+    "install": "prebuild-install -d --verbose || node-gyp rebuild",
     "build-electron": "cross-env HOME=./.electron-gyp npm_config_disturl=https://atom.io/download/atom-shell node-gyp rebuild --target=1.2.8 --runtime=electron",
     "pretest-node": "prebuild --compile",
     "test-node": "mocha",
