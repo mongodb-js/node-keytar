@@ -1,7 +1,7 @@
 var keytar = require('../');
 var assert = require('assert');
 
-describe.skip('keytar', function() {
+describe('keytar', function() {
   var service = 'keytar tests';
   var account = 'buster';
   var password = 'secret';
