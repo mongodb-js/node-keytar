@@ -5,10 +5,10 @@ node_js:
 - 6
 env:
   matrix:
-  - CC=clang CXX=clang++ npm_config_clang=1 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+  - CC=clang CXX=clang++ npm_config_clang=1
   global:
     secure: P2UYFfCwm6hvSWteYdNGUbZuPlJQxRcP+KBwKPKFv12IOURWsuasIvUvHMNrwlEh/O8DqjjwqT3JMnKp62mfMQnsJ8URFgLwn4HbdbWdKBwgZ096wPN6tLWkQ+cAmYfXlkCEl6p56dy+KmR7GdlY/74EuJi/wiSDPJv+0jDWAcrafbvTnQeizqCnpKpxWeJ0Zzz62kI3I6KhRtmcxJEHABpxgKr4HC9rPGknQ4Ff/2g+pROoMLRLvSpjMR9QgrNT/Lz1+ldZcbb75s033gYrTWhOTSYXGlMlGcNWKTDiL/fXqX/iYhB7fnht8iuEOs+m3KZrm9UBl5BwjnmyCIQCF5EWWch1/N4zRXOVwK9crs/udQsY3XHU/CVK7mBePQGxoidr9YklgFK5RR/MjO7aqFYvfnl6fZuAi2SYDfBV9REhUUqbw77qpvQXO5iKQphKKmmyl0Ae7lnZalWQIL0JTsrs081eewXJsrR+Kw+hPBQWJeC7oAGEHILTyACNITEihDaCszHV4DH8CI6YxsIA+D3ytRsEvolxZ69sY7bCfSjP92qo5nTPy/xfQAxJhM3CpY1coz4yw9VtaUJEQHqKzQ4ytXIfBi3wl4HXquPW70QVkpm+BSyUx0W6gpcouYpjWJGJq7qxLC7gdxMCY79cpSRIs/RvMrJUO9gkbRE8bKI=
-script: npm run ci
+script: script/cibuild
 addons:
   apt:
     sources:
