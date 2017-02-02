@@ -57,7 +57,7 @@
     "mongodb-js-fmt": "0.0.3",
     "mongodb-js-precommit": "^0.2.8",
     "node-cpplint": "~0.4.0",
-    "prebuild": "^5.1.2",
+    "prebuild": "^6.0.1",
     "rimraf": "~2.5.4",
     "xvfb-maybe": "^0.1.3"
   },
