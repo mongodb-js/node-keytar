@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "debug": "^2.2.0",
-    "nan": "^2.3.2",
+    "nan": "^2.6.2",
     "prebuild-install": "^2.0.0"
   }
 }
