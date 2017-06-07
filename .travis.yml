@@ -2,7 +2,8 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-- 6
+  - 6
+  - 7
 env:
   matrix:
   - CC=clang CXX=clang++ npm_config_clang=1
